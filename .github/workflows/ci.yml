@@ -35,5 +35,5 @@ jobs:
         make
         cp ../u-boot/u-boot.elf ./
         cp ../embeddedsw/lib/sw_apps/zynq_fsbl/src/fsbl.elf ./
-        ./mkbootimg ./build.bif ./BOOT.BIN
+        ./mkbootimage ./build.bif ./BOOT.BIN
         ls -lash BOOT.BIN
