@@ -27,6 +27,15 @@ jobs:
         make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zynq_wbpf_defconfig
         make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j$(nproc)
         ls -lash u-boot.elf
+    - name: linux
+      run: |
+        set -e
+        git clone https://github.com/losfair/linux-xlnx
+        cd linux-xlnx
+        git checkout dfe383631cd40b73232849df77ad30bb8703d9f9
+        cp ../linux.config ./.config
+        export ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
+        make -j$(nproc)
     - name: mkbootimage
       run: |
         set -e
@@ -35,7 +44,7 @@ jobs:
         git checkout 29f7d69d115c20dc1b3a63810ebcb2451a7a1411
         make
         cp ../u-boot-xlnx/u-boot.elf ./
-        cp ../fsbl.elf
+        cp ../fsbl.elf ./
         ./mkbootimage ../build.bif ../BOOT.BIN
         ls -lash ../BOOT.BIN
     - name: Upload
