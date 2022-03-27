@@ -1,0 +1,21 @@
+name: CI
+on:
+  push:
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Deps
+      run: apt install -y arm-none-eabi-gcc
+    - name: Build FSBL
+      run: |
+        set -e
+        git clone https://github.com/losfair/embeddedsw
+        cd embeddedsw
+        git checkout 92c4725f332c00331bd096192bb326ba3af45e8f
+        cd lib/sw_apps/zynq_fsbl/misc
+        make CC=arm-none-eabi-gcc
+        cd ../src
+        make
