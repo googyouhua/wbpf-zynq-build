@@ -14,7 +14,7 @@ jobs:
         set -e
         git clone https://github.com/losfair/embeddedsw
         cd embeddedsw
-        git checkout 50270870e6a78474404c5f443847ebc91f5d749b
+        git checkout 78c3d66dd80580a10a4dd801c10187bb9bd3046b
         cd lib/sw_apps/zynq_fsbl/src
         make
     - name: u-boot
@@ -37,7 +37,6 @@ jobs:
         cp ../embeddedsw/lib/sw_apps/zynq_fsbl/src/fsbl.elf ./
         ./mkbootimage ../build.bif ../BOOT.BIN
         ls -lash ../BOOT.BIN
-
     - name: Upload
       uses: actions/upload-artifact@v2
       with:
