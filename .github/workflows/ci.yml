@@ -35,5 +35,11 @@ jobs:
         make
         cp ../u-boot-xlnx/u-boot.elf ./
         cp ../embeddedsw/lib/sw_apps/zynq_fsbl/src/fsbl.elf ./
-        ./mkbootimage ./build.bif ./BOOT.BIN
-        ls -lash BOOT.BIN
+        ./mkbootimage ../build.bif ../BOOT.BIN
+        ls -lash ../BOOT.BIN
+
+    - name: Upload
+      uses: actions/upload-artifact@v2
+      with:
+        name: BOOT-BIN
+        path: ./BOOT.BIN
