@@ -8,7 +8,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Deps
-      run: sudo apt install -y arm-none-eabi-gcc
+      run: sudo apt install -y gcc-arm-none-eabi
     - name: Build FSBL
       run: |
         set -e
