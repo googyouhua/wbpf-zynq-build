@@ -14,12 +14,8 @@ jobs:
         set -e
         git clone https://github.com/losfair/embeddedsw
         cd embeddedsw
-        git checkout 92c4725f332c00331bd096192bb326ba3af45e8f
+        git checkout 50270870e6a78474404c5f443847ebc91f5d749b
         cd lib/sw_apps/zynq_fsbl/src
-        make || true # this will fail
-        cd ../misc
-        make CC=arm-none-eabi-gcc
-        cd ../src
         make
     - name: u-boot
       run: |
