@@ -18,7 +18,6 @@ jobs:
         cd lib/sw_apps/zynq_fsbl/src
         make || true # this will fail
         cd ../misc
-        ./copy_bsp.sh
         make CC=arm-none-eabi-gcc
         cd ../src
         make
