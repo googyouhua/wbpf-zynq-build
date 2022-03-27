@@ -16,7 +16,7 @@ jobs:
         cd embeddedsw
         git checkout 78c3d66dd80580a10a4dd801c10187bb9bd3046b
         cd lib/sw_apps/zynq_fsbl/src
-        make
+        make "CFLAGS=-DFSBL_DEBUG_INFO"
     - name: u-boot
       run: |
         set -e
