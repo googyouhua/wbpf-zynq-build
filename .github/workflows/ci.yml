@@ -20,9 +20,9 @@ jobs:
     - name: u-boot
       run: |
         set -e
-        git clone https://github.com/Xilinx/u-boot-xlnx
+        git clone https://github.com/losfair/u-boot-xlnx
         cd u-boot-xlnx
-        git checkout xilinx-v2019.2
+        git checkout 69c2565fd1603de8b951b00894e6cf0957c06d96
         make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zynq_wbpf_defconfig
         make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j$(nproc)
         ls -lash u-boot.elf
