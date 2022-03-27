@@ -16,6 +16,14 @@ jobs:
         cd embeddedsw
         git checkout 92c4725f332c00331bd096192bb326ba3af45e8f
         cd lib/sw_apps/zynq_fsbl/misc
+        ./copy_bsp.sh
         make CC=arm-none-eabi-gcc
         cd ../src
+        make
+    - name: mkbootimage
+      run: |
+        set -e
+        git clone https://github.com/antmicro/zynq-mkbootimage
+        cd zynq-mkbootimage
+        git checkout 29f7d69d115c20dc1b3a63810ebcb2451a7a1411
         make
