@@ -12,11 +12,12 @@ jobs:
     - name: FSBL
       run: |
         set -e
-        git clone https://github.com/losfair/embeddedsw
-        cd embeddedsw
-        git checkout 78c3d66dd80580a10a4dd801c10187bb9bd3046b
-        cd lib/sw_apps/zynq_fsbl/src
-        make "CFLAGS=-DFSBL_DEBUG_INFO"
+        curl -sSL -o fsbl.elf https://s3.us-west-1.amazonaws.com/build-res.s3.univalent.net/zynq_fsbl_altk_7020.elf
+        #git clone https://github.com/losfair/embeddedsw
+        #cd embeddedsw
+        #git checkout 78c3d66dd80580a10a4dd801c10187bb9bd3046b
+        #cd lib/sw_apps/zynq_fsbl/src
+        #make "CFLAGS=-DFSBL_DEBUG_INFO"
     - name: u-boot
       run: |
         set -e
@@ -34,7 +35,7 @@ jobs:
         git checkout 29f7d69d115c20dc1b3a63810ebcb2451a7a1411
         make
         cp ../u-boot-xlnx/u-boot.elf ./
-        cp ../embeddedsw/lib/sw_apps/zynq_fsbl/src/fsbl.elf ./
+        cp ../fsbl.elf
         ./mkbootimage ../build.bif ../BOOT.BIN
         ls -lash ../BOOT.BIN
     - name: Upload
