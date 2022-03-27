@@ -1,0 +1,5 @@
+bootimg:
+{
+  [bootloader]fsbl.elf
+  u-boot.elf
+}
