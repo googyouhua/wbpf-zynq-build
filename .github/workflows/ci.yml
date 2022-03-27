@@ -8,7 +8,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Deps
-      run: sudo apt install -y gcc-arm-none-eabi gcc-arm-linux-gnueabihf libelf-dev
+      run: sudo apt update && sudo apt install -y gcc-arm-none-eabi gcc-arm-linux-gnueabihf libelf-dev
     - name: FSBL
       run: |
         set -e
