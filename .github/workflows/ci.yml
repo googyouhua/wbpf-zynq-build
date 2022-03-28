@@ -39,7 +39,6 @@ jobs:
         cp ../u-boot-xlnx/u-boot.elf ./
         curl -sSL -o fsbl.elf https://s3.us-west-1.amazonaws.com/build-res.s3.univalent.net/zynq_fsbl_altk_7020.elf
         curl -sSL -o wbpf.bit https://s3.us-west-1.amazonaws.com/build-res.s3.univalent.net/wbpf-202203281430.bit
-        cp ../fsbl.elf ./
         ./mkbootimage ../build.bif ../BOOT.BIN
         ls -lash ../BOOT.BIN
     - name: Upload
