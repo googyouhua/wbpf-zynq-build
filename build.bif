@@ -1,5 +1,8 @@
 bootimg:
 {
   [bootloader]fsbl.elf
+  wbpf.bit
   u-boot.elf
+  [load=0x02080000]zImage
+  [load=0x02000000]zynq-wbpf.dtb
 }
