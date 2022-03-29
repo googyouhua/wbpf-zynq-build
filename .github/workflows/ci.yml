@@ -14,7 +14,7 @@ jobs:
         set -e
         git clone https://github.com/losfair/u-boot-xlnx
         cd u-boot-xlnx
-        git checkout 69c2565fd1603de8b951b00894e6cf0957c06d96
+        git checkout 47b604b33d97c1776d201cef9b096e4d8421b3e2
         make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zynq_wbpf_defconfig
         make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j$(nproc)
         ls -lash u-boot.elf
@@ -23,7 +23,7 @@ jobs:
         set -e
         git clone https://github.com/losfair/linux-xlnx
         cd linux-xlnx
-        git checkout 92d07d7df3e6ef58cd24054f50664f461e03945c
+        git checkout a87fabd07c038d6b728848cc29f16e4f46507003
         cp ../linux.config ./.config
         export ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
         make -j$(nproc)
@@ -38,7 +38,7 @@ jobs:
         cp ../linux-xlnx/arch/arm/boot/zImage ./
         cp ../u-boot-xlnx/u-boot.elf ./
         curl -sSL -o fsbl.elf https://s3.us-west-1.amazonaws.com/build-res.s3.univalent.net/zynq_fsbl_altk_7020.elf
-        curl -sSL -o wbpf.bit https://s3.us-west-1.amazonaws.com/build-res.s3.univalent.net/wbpf-202203281430.bit
+        curl -sSL -o wbpf.bit https://s3.us-west-1.amazonaws.com/build-res.s3.univalent.net/wbpf_202203292207.bit
         ./mkbootimage ../build.bif ../BOOT.BIN
         ls -lash ../BOOT.BIN
     - name: Upload
