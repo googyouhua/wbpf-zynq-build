@@ -23,7 +23,7 @@ jobs:
         set -e
         git clone https://github.com/losfair/linux-xlnx
         cd linux-xlnx
-        git checkout a87fabd07c038d6b728848cc29f16e4f46507003
+        git checkout ae19a172cbe8c25ea10bde78a332167b6a4d35d1
         cp ../linux.config ./.config
         export ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
         make -j$(nproc)
