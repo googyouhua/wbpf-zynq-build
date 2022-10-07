@@ -37,13 +37,5 @@ jobs:
         cp ../linux-xlnx/arch/arm/boot/dts/zynq-wbpf.dtb ./
         cp ../linux-xlnx/arch/arm/boot/zImage ./
         cp ../u-boot-xlnx/u-boot.elf ./
-        scp -r fsbl.elf root@124.223.177.143:/home/github_ci/zynq
-        scp -r wbpf.bit root@124.223.177.143:/home/github_ci/zynq
         ./mkbootimage ../build.bif ../BOOT.BIN
         ls -lash ../BOOT.BIN
-        scp -r ../BOOT.BIN root@124.223.177.143:/home/github_ci/zynq
-    - name: Upload
-      uses: actions/upload-artifact@v2
-      with:
-        name: BOOT-BIN
-        path: ./BOOT.BIN
